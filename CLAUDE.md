@@ -9,11 +9,23 @@ bank (debt and equity advisory across the capital stack). Domain: **levelcapital
 The firm was formerly **Tower Capital Advisors** — the rebrand is final. Never reintroduce "Tower"
 or `towercapitaladvisorsllc.com` anywhere (copy, emails, alt text, metadata).
 
-Stack: plain **Vite** multi-page site — `index.html` (home) and `team.html` (team). No framework.
-- Styles: `src/styles/tokens.css` (brand tokens) → `src/styles/main.css` (everything else)
-- Behavior: `src/main.js` (mobile nav, contact form, team directory)
-- Team data: `src/data/team.js`
-- Images: `public/images/` (served from `/images/...`)
+The site was originally generated in **Manus** and imported here (Sept 2026). GitHub is now the
+source of truth — **do not edit the site in Manus anymore**; changes there will not reach this repo.
+
+## Stack
+React 19 + TypeScript + Tailwind CSS v4, built with Vite, routed with `wouter`. Hosted on Vercel.
+- `client/index.html` — page shell: title, meta tags, Google Fonts
+- `client/src/App.tsx` — routes: `/` (Home), `/team` (Team), fallback 404
+- `client/src/pages/Home.tsx` — every home-page section; list content (expertise, approach steps,
+  capital structures, operating principles) lives in arrays at the top of the file
+- `client/src/pages/Team.tsx` — team directory; **team members are the `teamMembers` array** at the
+  top (name, title, portrait, email, phone, LinkedIn, biography paragraphs)
+- `client/src/components/SiteChrome.tsx` — header, nav, mobile menu, footer, `LevelMark`, `Brand`
+- `client/src/index.css` — **all site styling and brand tokens** (hand-written CSS, not utility classes)
+- `client/public/images/` — photos (served at `/images/...`); `client/public/favicon.svg`
+- `client/src/components/ui/` — stock shadcn/ui component library from the Manus template. Mostly
+  unused by the pages; leave it alone unless a change needs a component.
+- `vercel.json` — build settings + rewrite so `/team` loads when opened directly
 
 ## Rules — non-negotiable
 1. **Copy stays word-for-word unless Nick approves.** Do not rewrite, "tighten", or reorder site
@@ -21,68 +33,63 @@ Stack: plain **Vite** multi-page site — `index.html` (home) and `team.html` (t
    in the PR. If you think copy should change, propose it in the PR description instead.
 2. **Never commit to `main`.** Every change goes on its own branch (`jack/<topic>` or
    `nick/<topic>`), then a pull request, then review of the Vercel preview, then merge.
-3. **Colors and fonts come from `tokens.css` only.** Never hard-code a hex value or font name in
-   `main.css` or HTML. Use the semantic roles (`--color-accent`, etc.) where one fits.
-4. **LevelMark usage:** the wordmark is typographic — `<strong>Level</strong>Capital Advisors`
-   inside `.levelmark`. "Level" is always bold, "Capital Advisors" regular; never restyle, recolor
-   outside the tokens, abbreviate to "LCA" on the site, or replace with an image until the final
-   logo file lands (see Open items).
+3. **Colors come from the tokens in `index.css` `:root`.** Use `var(--copper)` etc.; don't introduce
+   new hex values without adding a named token.
+4. **LevelMark usage:** the monogram is the text **"LCA"** in Manrope 800, copper
+   (`.brand-mark`), followed by the lockup **"Level"** (Instrument Serif) over **"CAPITAL ADVISORS"**
+   (small caps). Use the `<Brand />` component — never rebuild or restyle the lockup inline, never
+   swap it for an image until a final logo file exists.
 5. **Email addresses:** `Borrowers@levelcapitaladvisors.com`, `Lenders@levelcapitaladvisors.com`,
-   and personal addresses `firstname@levelcapitaladvisors.com`. Nothing else.
-6. **Keep the legal line** in every footer: "Information is for discussion purposes only and does
-   not constitute a financing commitment."
-7. Keep it accessible and mobile-first: real alt text, labeled form fields, works at 375px wide.
+   and personal addresses `Firstname@levelcapitaladvisors.com`. Nothing else.
+6. **Keep the legal line** in the footer: "Information is for discussion purposes only and does not
+   constitute a financing commitment."
+7. Keep it accessible and responsive: real alt text, labeled form fields; check at ~375px, ~900px
+   and desktop widths (the CSS has breakpoints at 1280px, 900px and 760px).
 
-## Brand tokens (from `src/styles/tokens.css`)
+## Brand tokens (`client/src/index.css` → `:root`)
 | Token | Value | Use |
 |---|---|---|
-| `--basalt` | `#2b2d2f` | Primary dark — web text, nav, footer, dark sections |
-| `--basalt-soft` | `#45484b` | Secondary dark |
-| `--paper` | `#f5f1ea` | Primary light background |
-| `--paper-deep` | `#ebe4d8` | Alternate section background |
-| `--copper` | `#b8612a` | Accent — italic emphasis, links, CTAs |
-| `--copper-deep` | `#954c1f` | Accent hover |
-| `--navy` | `#1c2b3f` | Print / masthead navy (business cards, letterhead) |
-| `--stone` | `#8a8580` | Muted text, rules |
+| `--basalt` | `#171916` | Primary dark — hero, dark sections, footer |
+| `--basalt-soft` | `#23251f` | Secondary dark |
+| `--ink` | `#1d201c` | Body text on light backgrounds |
+| `--paper` | `#f8f5ee` | Primary light background |
+| `--limestone` | `#eee7da` | Alternate light background |
+| `--copper` | `#c75b37` | Accent — LCA mark, italic emphasis, CTAs, datum lines |
+| `--copper-dark` | `#a7462a` | Accent hover / pressed |
+| `--hairline` | `rgba(29,32,28,.2)` | Rules and dividers |
 
-Fonts: **Cormorant Garamond** (display — headings, LevelMark, quotes) and **Inter** (body), via
-Google Fonts. Signature move: headline with the second phrase in copper italic — e.g.
-"Capital, *elevated.*"
-
-> ⚠️ The hex values and fonts above are **provisional** placeholders. Replace them with the exact
-> values from the refresh file / brand kit (see Open items) — change them in `tokens.css` and this
-> table together.
+Fonts (Google Fonts, loaded in `client/index.html`): **Instrument Serif** (headlines, "Level"
+wordmark) and **Manrope** 400–800 (body, labels, LCA mark). Signature move: a headline whose second
+phrase is copper italic — e.g. "Capital, *elevated.*" (`<em>` inside headings).
+Design system name inherited from Manus: "Sonoran Monolith" (see file header comments).
 
 ## Open items
-- [ ] **Confirm brand tokens** — exact basalt / paper / copper hex values and the two fonts.
-- [ ] **Final Level logo** — replace the typographic LevelMark only once the real logo file exists.
-- [ ] **Nick's hi-res portrait** → `public/images/team/nick-yanoti.jpg`, then set `photo` in `team.js`.
-- [ ] **Missing LA and Chicago photos** → `public/images/` (placement TBD with Nick).
-- [ ] **Hero image** → `public/images/hero.jpg`. Current alt text is "Contemporary desert tower in
-      late-afternoon light" (a Tower-era image) — confirm whether the image changes with the rebrand.
-- [ ] **Team roles and bios** in `team.js` are placeholders ("Role TBD", "Bio pending.").
-- [ ] **Illustrative capital structures** bar proportions in `index.html` are placeholders.
-- [ ] **Rebrand copy swaps need Nick's sign-off**: "We are *Level.*", "the *Level standard.*",
-      "Each Level Capital Advisor…", "Level is built on…" (all were "Tower" in the source copy).
+- [ ] **Search engines are blocked.** `client/index.html` has `<meta name="robots" content="noindex, nofollow">`
+      and `client/public/robots.txt` disallows everything (same as the Manus site). Remove both
+      **only** when Jack and Nick are ready for the site to appear in Google.
+- [ ] **Move the domain** levelcapitaladvisors.com from Manus to Vercel once this version is approved.
+- [ ] **Final Level logo** — the "LCA" text mark and "L" favicon are interim until a logo file exists.
 - [ ] Hero coordinates (33.49° N · 111.93° W, Scottsdale) — confirm they still apply.
 
 ## How to run
 ```bash
 npm install
-npm run dev       # local dev server at http://localhost:5173
+npm run dev       # local dev server at http://localhost:3000
 npm run build     # production build into dist/
 npm run preview   # serve the production build locally
+npm run check     # TypeScript type-check
 ```
 
 ## How to deploy
-Hosted on **Vercel**, connected to this GitHub repo.
+Hosted on **Vercel** (account `jack-7655`, project `level-website`), connected to this GitHub repo.
 - Every pull request gets an automatic **preview URL** (posted on the PR by the Vercel bot) — that
   is what the other person reviews before approving.
-- Merging to `main` deploys production at levelcapitaladvisors.com.
-- Vercel settings: Framework preset **Vite**, build command `npm run build`, output `dist`.
+- Merging to `main` deploys production (currently `level-website-jack-7655.vercel.app`; will be
+  levelcapitaladvisors.com once the domain moves).
+- Build settings live in `vercel.json`: `npm run build` → `dist`.
 
 ## Working with Claude in this repo
-When asked to make a change: create a branch, make the edit, run `npm run build` to confirm it
-compiles, commit with a clear message, push, and open a PR using the template in
+When asked to make a change: create a branch, make the edit, run `npm run build` (and `npm run check`)
+to confirm it compiles, commit with a clear message, push, and open a PR using
 `.github/pull_request_template.md`. Call out any copy changes explicitly in the PR so Nick can
 approve them. When asked to review the other person's PR, check it against the rules above.

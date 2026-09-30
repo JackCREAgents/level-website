@@ -12,7 +12,7 @@ GitHub is the shared brain: Jack and Nick each run Claude on their own account a
 4. **Claude desktop app** — install, sign in with your own Claude account, open the **Code** tab.
 5. **Clone the repo** — in the Code tab, open the repo from GitHub, or in a terminal:
    ```bash
-   git clone https://github.com/levelcapitaladvisors-console/level-website.git
+   git clone https://github.com/JackCREAgents/level-website.git
    cd level-website
    npm install
    ```
@@ -28,23 +28,24 @@ GitHub is the shared brain: Jack and Nick each run Claude on their own account a
 4. They review the preview (and the PR), approve, and merge.
 5. Merging to `main` deploys the live site.
 
-**Never commit directly to `main`.** Copy changes need Nick's approval.
+**Never commit directly to `main`.** Copy changes need Nick's approval. Don't edit the site in Manus
+anymore — this repo is the source of truth.
 
 ## Commands
 ```bash
-npm run dev       # local dev server (http://localhost:5173)
+npm run dev       # local dev server (http://localhost:3000)
 npm run build     # production build → dist/
 npm run preview   # preview the production build
+npm run check     # TypeScript type-check
 ```
 
-## Structure
+## Where things live
 ```
-index.html              Home page
-team.html               Team page
-src/main.js             Nav, contact form, team directory
-src/data/team.js        Team members (names, roles, bios, photos)
-src/styles/tokens.css   Brand tokens — the only place colors/fonts are defined
-src/styles/main.css     Site styles
-public/images/          Images (hero, team portraits, office photos)
-CLAUDE.md               Rules and context Claude reads every session
+client/index.html                     Page title, meta tags, fonts
+client/src/pages/Home.tsx             Home page (all sections)
+client/src/pages/Team.tsx             Team page — edit the teamMembers array for bios/titles/photos
+client/src/components/SiteChrome.tsx  Header, navigation, footer, LCA logo
+client/src/index.css                  All styling + brand colors
+client/public/images/                 Photos
+CLAUDE.md                             Rules and context Claude reads every session
 ```

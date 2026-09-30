@@ -14,8 +14,8 @@
 <!-- Vercel posts the preview link on this PR automatically. Pages/sections to check: -->
 
 ## Checklist
-- [ ] `npm run build` passes
+- [ ] `npm run build` and `npm run check` pass
 - [ ] Checked on mobile width (~375px) and desktop
-- [ ] Colors/fonts come from `tokens.css` (no hard-coded values)
+- [ ] Colors come from the `:root` tokens in `client/src/index.css` (no new hard-coded values)
 - [ ] No "Tower" references reintroduced
 - [ ] Open items in `CLAUDE.md` updated if this closes one
