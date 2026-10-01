@@ -300,7 +300,7 @@ export default function Team() {
               ) : (
                 <div className="profile-forthcoming">
                   <span>Profile in preparation</span>
-                  <p>Nick Yanoti’s biography and direct contact information will be added once approved.</p>
+                  <p>{selectedMember.name}’s biography and direct contact information will be added once approved.</p>
                 </div>
               )}
             </div>
