@@ -28,7 +28,7 @@ GitHub is the shared brain: Jack and Nick each run Claude on their own account a
 4. They review the preview (and the PR), approve, and merge.
 5. Merging to `main` deploys the live site.
 
-**Never commit directly to `main`.** Copy changes need Nick's approval. Don't edit the site in Manus
+**Never commit directly to `main`.** Jack has final say on all changes. Don't edit the site in Manus
 anymore — this repo is the source of truth.
 
 ## Commands

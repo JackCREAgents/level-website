@@ -24,9 +24,9 @@ const teamMembers: TeamMember[] = [
   {
     id: "jack-corrigan",
     name: "Jack Corrigan",
-    title: "Managing Partner",
+    title: "Founder & Managing Partner",
     portrait: "/images/jack-corrigan.webp",
-    portraitAlt: "Jack Corrigan, Managing Partner of Level Capital Advisors",
+    portraitAlt: "Jack Corrigan, Founder & Managing Partner of Level Capital Advisors",
     portraitPosition: "53% center",
     email: "Jack@levelcapitaladvisors.com",
     phone: {

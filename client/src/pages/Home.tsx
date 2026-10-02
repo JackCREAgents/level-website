@@ -1,11 +1,8 @@
 // Sonoran Monolith homepage: asymmetric editorial layouts, sharp architectural crops, and copper datum lines.
-import { useState } from "react";
 import {
   ArrowRight,
   ArrowUpRight,
-  ChevronDown,
   Database,
-  HeartHandshake,
   MoveRight,
   ScanSearch,
   ShieldCheck,
@@ -15,29 +12,36 @@ import { SiteFooter, SiteHeader } from "@/components/SiteChrome";
 
 const heroUrl = "/images/hero-sonoran.webp";
 
+// `stack` is the card's position-in-the-capital-stack tag; it mirrors the hero's capital rail.
 const expertise = [
   {
     title: "Construction Finance",
+    stack: "Senior debt",
     copy: "Ground-up, adaptive-reuse, and renovation capital aligned with project schedules, draw mechanics, and sponsor objectives.",
   },
   {
     title: "Bridge & Transitional Debt",
+    stack: "Senior debt",
     copy: "Flexible capital for acquisitions, lease-up, repositioning, recapitalizations, and other transitional business plans.",
   },
   {
     title: "Permanent Financing",
+    stack: "Senior debt",
     copy: "Fixed- and floating-rate financing sourced across banks, agencies, life companies, CMBS platforms, and debt funds.",
   },
   {
     title: "Structured Capital",
+    stack: "Mezzanine · Preferred equity",
     copy: "Mezzanine debt, preferred equity, and layered structures that close capital gaps while protecting sponsor priorities.",
   },
   {
     title: "Joint Venture Equity",
+    stack: "JV equity",
     copy: "Sponsor-equity positioning and partner selection for development and acquisition opportunities.",
   },
   {
     title: "Special Situations",
+    stack: "Across the stack",
     copy: "Independent advice for complex refinancings, recapitalizations, workouts, and time-sensitive executions.",
   },
 ];
@@ -106,8 +110,6 @@ function SectionLabel({ index, children, light = false }: { index: string; child
 }
 
 export default function Home() {
-  const [activeService, setActiveService] = useState(0);
-
   const handleContact = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -164,8 +166,9 @@ export default function Home() {
               <p>We bring creative structuring, informed market judgment, and long-term relationship stewardship to every mandate.</p>
             </div>
             <div className="principles-grid" role="list" aria-label="Level Capital Advisors operating principles">
+              {/* The first principle (Dependable Relationships) is featured full-width via .principle-featured. */}
               {operatingPrinciples.map((principle, index) => (
-                <div key={principle} role="listitem">
+                <div key={principle} role="listitem" className={index === 0 ? "principle-featured" : undefined}>
                   <small>0{index + 1}</small>
                   <span>{principle}</span>
                 </div>
@@ -193,26 +196,25 @@ export default function Home() {
         </section>
 
         <section id="philosophy" className="philosophy-section section-pad">
-          <div className="philosophy-grid">
-            <aside className="philosophy-signature">
-              <SectionLabel index="02" light>Philosophy</SectionLabel>
-              <div className="weak-ties-note">
-                <h3>The power of <em>weak ties.</em></h3>
-                <p>Level Capital Advisors uses the concept of Weak Ties as described in Meg Jay’s book <cite>The Defining Decade</cite>.</p>
-                <p className="weak-ties-approach">Each Level Capital Advisor approaches each relationship with a clear philosophy:</p>
-                <blockquote>“What can we do to add value to your business—and make your journey more fun along the way?”</blockquote>
-              </div>
-            </aside>
-            <blockquote>
-              <p>Relationships are not a byproduct of our work. <em>They are the foundation of it.</em></p>
-              <footer>Level Capital Advisors Commitment to Clients</footer>
-            </blockquote>
-            <div className="community-commitment">
-              <HeartHandshake size={32} strokeWidth={1.35} aria-hidden="true" />
-              <span>Contribution in practice</span>
-              <h3>Build where we do business.</h3>
-              <p>Every Level Capital Advisor will be required to participate in one Habitat for Humanity build event each year.</p>
-              <small>Community commitment · one build event annually</small>
+          <div className="philosophy-inner">
+            <SectionLabel index="02" light>Philosophy</SectionLabel>
+            <figure className="philosophy-anchor">
+              <blockquote>Relationships are not a byproduct of our work. <em>They are the foundation of it.</em></blockquote>
+              <figcaption>The commitment behind every deal we take on.</figcaption>
+            </figure>
+            <div className="philosophy-tenets">
+              <article>
+                <h3>The power of weak ties</h3>
+                <p>We build on the idea of weak ties from Meg Jay’s <cite>The Defining Decade</cite> — the loosest connections tend to open the most doors. So we treat every introduction as one worth making.</p>
+              </article>
+              <article>
+                <h3>Add value, make it fun</h3>
+                <p>Each advisor works from a single question: what can we do to add value to your business — and make the journey more fun along the way?</p>
+              </article>
+              <article>
+                <h3>Build where we do business</h3>
+                <p>Principles should cost something. Every advisor commits to one Habitat for Humanity build a year, in the communities where we work.</p>
+              </article>
             </div>
           </div>
         </section>
@@ -237,23 +239,17 @@ export default function Home() {
               <div><ShieldCheck size={22} strokeWidth={1.4} /><span>Human oversight</span><p>Use technology to accelerate analysis—not outsource accountability.</p></div>
             </div>
           </aside>
-          <div className="expertise-ledger">
-            {expertise.map((item, index) => {
-              const open = activeService === index;
-              return (
-                <button
-                  key={item.title}
-                  className={`expertise-row ${open ? "expertise-row-open" : ""}`}
-                  onClick={() => setActiveService(open ? -1 : index)}
-                  aria-expanded={open}
-                >
+          <div className="expertise-grid" role="list" aria-label="Level Capital Advisors expertise">
+            {expertise.map((item, index) => (
+              <article key={item.title} className="expertise-card" role="listitem">
+                <header>
                   <span className="expertise-index">0{index + 1}</span>
-                  <span className="expertise-title">{item.title}</span>
-                  <span className="expertise-copy">{item.copy}</span>
-                  <span className="expertise-icon"><ChevronDown size={22} /></span>
-                </button>
-              );
-            })}
+                  <span className="expertise-stack">{item.stack}</span>
+                </header>
+                <h3>{item.title}</h3>
+                <p>{item.copy}</p>
+              </article>
+            ))}
           </div>
         </section>
 

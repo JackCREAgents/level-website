@@ -28,9 +28,10 @@ React 19 + TypeScript + Tailwind CSS v4, built with Vite, routed with `wouter`. 
 - `vercel.json` — build settings + rewrite so `/team` loads when opened directly
 
 ## Rules — non-negotiable
-1. **Copy stays word-for-word unless Nick approves.** Do not rewrite, "tighten", or reorder site
-   copy on your own. Layout, styling, and code changes are fine; wording changes need Nick's sign-off
-   in the PR. If you think copy should change, propose it in the PR description instead.
+1. **Jack has final say and needs no one's approval.** Jack (Founder & Managing Partner) can
+   request, approve, and merge any change himself. Never rewrite, "tighten", or reorder site copy on
+   your own initiative — change wording only when Jack or Nick asks for it. Call out every copy
+   change in the PR so the other person can see it.
 2. **Never commit to `main`.** Every change goes on its own branch (`jack/<topic>` or
    `nick/<topic>`), then a pull request, then review of the Vercel preview, then merge.
 3. **Colors come from the tokens in `index.css` `:root`.** Use `var(--copper)` etc.; don't introduce
@@ -67,7 +68,7 @@ Design system name inherited from Manus: "Sonoran Monolith" (see file header com
 - [ ] **Search engines are blocked.** `client/index.html` has `<meta name="robots" content="noindex, nofollow">`
       and `client/public/robots.txt` disallows everything (same as the Manus site). Remove both
       **only** when Jack and Nick are ready for the site to appear in Google.
-- [ ] **Move the domain** levelcapitaladvisors.com from Manus to Vercel once this version is approved.
+- [ ] **Disconnect levelcapitaladvisors.com in Manus** (DNS already points to Vercel as of 2026-10-01).
 - [ ] **Final Level logo** — the "LCA" text mark and "L" favicon are interim until a logo file exists.
 - [ ] Hero coordinates (33.49° N · 111.93° W, Scottsdale) — confirm they still apply.
 
@@ -84,12 +85,12 @@ npm run check     # TypeScript type-check
 Hosted on **Vercel** (account `jack-7655`, project `level-website`), connected to this GitHub repo.
 - Every pull request gets an automatic **preview URL** (posted on the PR by the Vercel bot) — that
   is what the other person reviews before approving.
-- Merging to `main` deploys production (currently `level-website-jack-7655.vercel.app`; will be
-  levelcapitaladvisors.com once the domain moves).
+- Merging to `main` deploys production at **https://www.levelcapitaladvisors.com** (the bare
+  domain redirects to www). DNS is at Namecheap; leave the Gmail MX record alone.
 - Build settings live in `vercel.json`: `npm run build` → `dist`.
 
 ## Working with Claude in this repo
 When asked to make a change: create a branch, make the edit, run `npm run build` (and `npm run check`)
 to confirm it compiles, commit with a clear message, push, and open a PR using
-`.github/pull_request_template.md`. Call out any copy changes explicitly in the PR so Nick can
-approve them. When asked to review the other person's PR, check it against the rules above.
+`.github/pull_request_template.md`. Call out any copy changes explicitly in the PR. When asked to
+review the other person's PR, check it against the rules above.
