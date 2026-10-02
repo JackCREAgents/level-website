@@ -6,7 +6,7 @@
 
 ## Copy changes
 - [ ] No site copy changed
-- [ ] Copy changed — listed below, **needs Nick's approval before merge**
+- [ ] Copy changed — listed below
 
 <!-- If copy changed, list each change as: "Old text" → "New text" -->
 
