@@ -200,20 +200,20 @@ export default function Home() {
             <SectionLabel index="02" light>Philosophy</SectionLabel>
             <figure className="philosophy-anchor">
               <blockquote>Relationships are not a byproduct of our work. <em>They are the foundation of it.</em></blockquote>
-              <figcaption>The commitment behind every deal we take on.</figcaption>
+              <figcaption>The commitment we bring to each engagement.</figcaption>
             </figure>
             <div className="philosophy-tenets">
               <article>
                 <h3>The power of weak ties</h3>
-                <p>We build on the idea of weak ties from Meg Jay’s <cite>The Defining Decade</cite> — the loosest connections tend to open the most doors. So we treat every introduction as one worth making.</p>
+                <p>Meg Jay’s <cite>The Defining Decade</cite> shows how our loosest connections often open the most doors. That’s why we treat any introduction as an opportunity worth pursuing.</p>
               </article>
               <article>
                 <h3>Add value, make it fun</h3>
-                <p>Each advisor works from a single question: what can we do to add value to your business — and make the journey more fun along the way?</p>
+                <p>Our team starts with one question: how can we strengthen your business — and make the process more enjoyable along the way?</p>
               </article>
               <article>
                 <h3>Build where we do business</h3>
-                <p>Principles should cost something. Every advisor commits to one Habitat for Humanity build a year, in the communities where we work.</p>
+                <p>Principles should cost something. Once a year, all of our advisors join a Habitat for Humanity build in the neighborhoods we serve.</p>
               </article>
             </div>
           </div>
@@ -231,7 +231,7 @@ export default function Home() {
             <div className="intelligence-heading">
               <span>AI-powered program</span>
               <h3 id="intelligence-title">Faster intelligence.<br /><em>Accountable judgment.</em></h3>
-              <p>Market data, research, and AI surface what matters sooner. Experienced judgment drives every recommendation.</p>
+              <p>We pair AI with rigorous research to identify what matters before others see it. Experienced judgment drives every recommendation.</p>
             </div>
             <div className="intelligence-points">
               <div><ScanSearch size={22} strokeWidth={1.4} /><span>Market signals</span><p>Find relevant movements, precedents, and risks sooner.</p></div>
