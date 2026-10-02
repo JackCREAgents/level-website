@@ -210,7 +210,7 @@ section[id] { scroll-margin-top: calc(var(--header-height) + var(--anchor-cleara
 .firm-copy .lead { color: var(--ink); font-family: "Instrument Serif",serif; font-size: 24px; line-height: 1.35; }
 .firm-copy .text-link { margin-top: 26px; }
 
-.philosophy-section { background: var(--basalt-soft); color: white; overflow: hidden; }
+.philosophy-section { background-color: var(--basalt-soft); background-image: linear-gradient(90deg,rgba(35,37,31,.92) 0%,rgba(35,37,31,.8) 45%,rgba(35,37,31,.55) 75%,rgba(35,37,31,.38) 100%),url('/images/philosophy-homes.jpg'); background-size: cover; background-position: center; color: white; overflow: hidden; }
 .philosophy-section::before { height: 100%; background: linear-gradient(180deg,var(--copper) 0 92px,rgba(199,91,55,.16) 92px); }
 .philosophy-section > .philosophy-inner { max-width: var(--content-max); margin-inline: auto; }
 .philosophy-anchor { margin: clamp(44px,5vw,72px) 0 0; }
@@ -229,15 +229,15 @@ section[id] { scroll-margin-top: calc(var(--header-height) + var(--anchor-cleara
 .expertise-heading h2 { font-size: clamp(54px,5.4vw,94px); line-height: .98; }
 .expertise-statement > p { max-width: 760px; margin-top: 32px; color: var(--copper); font-size: 15px; line-height: 1.9; font-weight: 600; text-wrap: pretty; }
 .expertise-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: rgba(255,255,255,.16); border: 1px solid rgba(255,255,255,.16); }
-.expertise-card { position: relative; min-height: 320px; padding: clamp(28px,2.6vw,42px); display: flex; flex-direction: column; background: rgba(23,25,22,.86); backdrop-filter: blur(10px); color: white; transition: background 200ms var(--ease-out); }
+.expertise-card { position: relative; min-height: 0; padding: clamp(22px,1.9vw,30px) clamp(22px,2vw,32px) clamp(24px,2vw,32px); display: flex; flex-direction: column; background: rgba(23,25,22,.86); backdrop-filter: blur(10px); color: white; transition: background 200ms var(--ease-out); }
 .expertise-card::before { content: ""; position: absolute; top: -1px; left: 0; width: 44px; height: 2px; background: var(--copper); transition: width 280ms var(--ease-out); }
 .expertise-card:hover { background: rgba(23,25,22,.96); }
 .expertise-card:hover::before { width: 100%; }
 .expertise-card header { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; }
 .expertise-index { color: var(--copper); font-size: 14px; font-weight: 700; letter-spacing: .1em; }
 .expertise-stack { color: #8f928a; font-size: 12px; font-weight: 700; letter-spacing: .12em; text-align: right; text-transform: uppercase; }
-.expertise-card h3 { margin: auto 0 16px; padding-top: 56px; font-family: "Instrument Serif",serif; font-size: clamp(30px,2.6vw,44px); font-weight: 400; letter-spacing: -.02em; line-height: 1; }
-.expertise-card p { margin: 0; color: #b9bbb2; font-size: 15px; line-height: 1.75; text-wrap: pretty; }
+.expertise-card h3 { margin: 0 0 10px; padding-top: 22px; font-family: "Instrument Serif",serif; font-size: clamp(26px,2.1vw,34px); font-weight: 400; letter-spacing: -.02em; line-height: 1; }
+.expertise-card p { margin: 0; color: #b9bbb2; font-size: 14px; line-height: 1.6; text-wrap: pretty; }
 
 .approach-section { background-color: var(--limestone); background-image: linear-gradient(90deg,rgba(244,239,229,.99) 0%,rgba(244,239,229,.94) 34%,rgba(244,239,229,.72) 58%,rgba(244,239,229,.12) 100%),url('/images/strategic-advising.jpg'); background-size: cover; background-position: 72% center; background-blend-mode: normal; filter: none; }
 .approach-intro { align-items: start; }
@@ -454,7 +454,6 @@ section[id] { scroll-margin-top: calc(var(--header-height) + var(--anchor-cleara
   .principles-grid > div:nth-child(n+4) { border-top: 1px solid var(--hairline); }
   .intelligence-band { grid-template-columns: 1fr; }
   .intelligence-points { border-left: 0; border-top: 1px solid rgba(255,255,255,.16); }
-  .expertise-grid { grid-template-columns: repeat(2,1fr); }
   .approach-layout { grid-template-columns: 1fr; }
   .capital-structures { max-width: none; }
   .capital-structures-grid { gap: 20px; }
@@ -470,6 +469,7 @@ section[id] { scroll-margin-top: calc(var(--header-height) + var(--anchor-cleara
 }
 
 @media (max-width: 900px) {
+  .expertise-grid { grid-template-columns: repeat(2,1fr); }
   .desktop-nav, .header-cta { display: none; }
   .menu-button { display: block; }
   .philosophy-tenets { grid-template-columns: 1fr; gap: 40px; }
@@ -510,13 +510,14 @@ section[id] { scroll-margin-top: calc(var(--header-height) + var(--anchor-cleara
   .firm-statement h2 { font-size: clamp(42px,13vw,54px); line-height: .96; }
   .firm-copy, .expertise-statement > p { margin-top: 40px; }
   .firm-copy { padding: 24px; background: rgba(248,245,238,.9); }
+  .philosophy-section { background-image: linear-gradient(180deg,rgba(35,37,31,.88) 0%,rgba(35,37,31,.78) 60%,rgba(35,37,31,.66) 100%),url('/images/philosophy-homes.jpg'); background-position: 60% center; }
   .philosophy-anchor blockquote { font-size: clamp(42px,12.5vw,60px); }
   .philosophy-anchor figcaption { font-size: 15px; }
   .expertise-heading { display: block; }
   .expertise-section { background-image: linear-gradient(180deg,rgba(23,25,22,.94) 0%,rgba(23,25,22,.78) 52%,rgba(23,25,22,.28) 100%),url('/images/chicago-high-rise-crane.jpg'); background-position: 54% center; }
   .expertise-grid { grid-template-columns: 1fr; }
-  .expertise-card { min-height: 0; padding: 28px 22px; }
-  .expertise-card h3 { padding-top: 34px; font-size: 32px; }
+  .expertise-card { padding: 22px 20px 24px; }
+  .expertise-card h3 { padding-top: 18px; font-size: 28px; }
   .approach-layout { margin-top: 56px; gap: 40px; }
   .approach-heading { margin-top: 0; }
   .approach-summary { margin-top: 30px; }
